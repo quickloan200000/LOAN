@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Loan Calculator</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<title>Loan Calculator</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,8 +12,6 @@
 <div class="card">
 
 <h2>₹2,50,000 Eligible</h2>
-
-<label>Enter Loan Amount</label>
 
 <input
 type="number"
@@ -56,37 +54,65 @@ Submit Application
 
 function calculate(){
 
-let amount = parseInt(document.getElementById("amount").value) || 0;
+let amount=
+parseInt(document.getElementById("amount").value)||0;
 
-let interest = 2.5;
-let months = 36;
-let processingFee = 2500;
-let gst = 450;
+let interest=2.5;
 
-let totalInterest = (amount * interest / 100) * 3;
+let months=36;
 
-let totalAmount = amount + totalInterest;
+let processingFee=2500;
 
-let emi = Math.round(totalAmount / months);
+let gst=450;
 
-let total = totalAmount + processingFee + gst;
+let emi=Math.round(
+(amount/months)
++
+(amount*interest/100)
+);
 
-localStorage.setItem("loanAmount", amount.toLocaleString());
+let total=
+(emi*months)
++
+processingFee
++
+gst;
 
-
-document.getElementById("emi").innerHTML =
+document.getElementById("emi").innerHTML=
 emi.toLocaleString();
 
-
-document.getElementById("total").innerHTML =
+document.getElementById("total").innerHTML=
 total.toLocaleString();
+
+localStorage.setItem(
+"loanAmount",
+amount.toLocaleString()
+);
 
 }
 
 calculate();
 
 function submitApplication(){
-window.location.href = "pending-status.html";
+
+document.body.innerHTML=`
+
+<div class="card">
+
+<div class="loader"></div>
+
+<h2>Submitting Application...</h2>
+
+</div>
+
+`;
+
+setTimeout(function(){
+
+window.location.href="pending-status.html";
+
+},3000);
+
 }
 
 </script>
