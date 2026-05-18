@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +9,91 @@
 
 <body>
 
-<div class="card">
+<div class="loan-page">
 
-<h2>Alternate Numbers</h2>
+    <div class="top-box">
+        <h1>Contact Details</h1>
+        <p>Add alternate & emergency contact numbers</p>
+    </div>
 
-<input type="number" placeholder="Alternate Number">
+    <div class="card">
 
-<input type="number" placeholder="Emergency Contact">
+        <div class="approve-box">
 
-<button onclick="nextPage()">
-Continue
-</button>
+            <h2>📞 Alternate Contact</h2>
+
+            <p>
+                Please provide alternate mobile numbers
+                for verification purposes.
+            </p>
+
+        </div>
+
+        <div class="details-box">
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    Alternate Mobile Number
+                </label>
+
+                <input
+                type="number"
+                id="altNumber"
+                placeholder="Enter Alternate Number"
+                style="margin-top:10px;">
+
+            </div>
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    Emergency Contact Number
+                </label>
+
+                <input
+                type="number"
+                id="emergencyNumber"
+                placeholder="Enter Emergency Contact"
+                style="margin-top:10px;">
+
+            </div>
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    Landline Number (Optional)
+                </label>
+
+                <input
+                type="number"
+                id="landline"
+                placeholder="Enter Landline Number"
+                style="margin-top:10px;">
+
+            </div>
+
+        </div>
+
+        <button
+        class="apply-btn"
+        onclick="nextPage()">
+
+            Continue →
+
+        </button>
+
+    </div>
+
+</div>
+
+<div id="loadingScreen" class="loading-screen">
+
+    <div class="loader"></div>
+
+    <p>
+        Verifying Contact Details...
+    </p>
 
 </div>
 
@@ -27,23 +101,39 @@ Continue
 
 function nextPage(){
 
-document.body.innerHTML=`
+    let alt =
+    document.getElementById("altNumber").value;
 
-<div class="card">
+    let emergency =
+    document.getElementById("emergencyNumber").value;
 
-<div class="loader"></div>
+    if(alt==="" || emergency===""){
 
-<h2>Please Wait...</h2>
+        alert("Please fill all required fields");
 
-</div>
+        return;
+    }
 
-`;
+    localStorage.setItem(
+    "alternateNumber",
+    alt
+    );
 
-setTimeout(function(){
+    localStorage.setItem(
+    "emergencyNumber",
+    emergency
+    );
 
-window.location.href="photo-upload.html";
+    document
+    .getElementById("loadingScreen")
+    .style.display = "flex";
 
-},3000);
+    setTimeout(function(){
+
+        window.location.href =
+        "photo-upload.html";
+
+    },2500);
 
 }
 
