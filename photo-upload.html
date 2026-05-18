@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,39 +9,101 @@
 
 <body>
 
-<div class="card">
+<div class="loan-page">
 
-<h2>Upload Selfie</h2>
+    <div class="top-box">
+        <h1>Selfie Verification</h1>
+        <p>Upload your live selfie photo</p>
+    </div>
 
-<input type="file" accept="image/*">
+    <div class="card">
 
-<button onclick="nextPage()">
-Continue
-</button>
+        <div class="approve-box">
+
+            <h2>📸 Upload Selfie</h2>
+
+            <p>
+                Please upload a clear selfie photo
+                for face verification.
+            </p>
+
+        </div>
+
+        <div class="details-box">
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label
+                style="font-size:18px;
+                font-weight:bold;">
+
+                    Selfie Photo
+
+                </label>
+
+                <input
+                type="file"
+                id="selfie"
+                accept="image/*"
+                style="margin-top:15px;">
+
+            </div>
+
+        </div>
+
+        <button
+        class="apply-btn"
+        onclick="uploadPhoto()">
+
+            Upload & Continue →
+
+        </button>
+
+    </div>
+
+</div>
+
+<div id="loadingScreen"
+class="loading-screen">
+
+    <div class="loader"></div>
+
+    <p>
+        Verifying Selfie...
+    </p>
 
 </div>
 
 <script>
 
-function nextPage(){
+function uploadPhoto(){
 
-document.body.innerHTML=`
+    let selfie =
+    document.getElementById("selfie");
 
-<div class="card">
+    if(selfie.files.length === 0){
 
-<div class="loader"></div>
+        alert("Please upload selfie photo");
 
-<h2>Uploading Photo...</h2>
+        return;
+    }
 
-</div>
+    localStorage.setItem(
+    "selfieUploaded",
+    "yes"
+    );
 
-`;
+    document
+    .getElementById("loadingScreen")
+    .style.display = "flex";
 
-setTimeout(function(){
+    setTimeout(function(){
 
-window.location.href="document-upload.html";
+        window.location.href =
+        "document-upload.html";
 
-},3000);
+    },2500);
 
 }
 
