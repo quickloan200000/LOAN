@@ -1,31 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Loan Amount</title>
-<link rel="stylesheet" href="style.css">
+<title>Checking Eligibility</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:#f3f3f3;
+font-family:sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+text-align:center;
+}
+
+.loader{
+width:80px;
+height:80px;
+border:10px solid #ddd;
+border-top:10px solid #ffd500;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:auto;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+h2{
+margin-top:30px;
+}
+
+p{
+margin-top:10px;
+}
+
+</style>
+
 </head>
+
 <body>
 
-<div class="container">
+<div class="box">
 
-<div class="card">
-<h1>You're Pre-Approved!</h1>
-<h1>₹2,50,000</h1>
-</div>
+<div class="loader"></div>
 
-<h2>Loan Amount : ₹2,50,000</h2>
-<h2>Interest : 2.5%</h2>
-<h2>EMI : ₹10,450</h2>
-<h2>Document Fee : ₹2500</h2>
+<h2>Checking Your Eligibility...</h2>
 
-<button onclick="nextPage()">Apply Loan</button>
+<p>Please wait...</p>
 
 </div>
 
 <script>
-function nextPage(){
-window.location.href='loan-calculator.html';
-}
+
+setTimeout(function(){
+
+window.location.href="loan-calculator.html";
+
+},3000);
+
 </script>
 
 </body>
