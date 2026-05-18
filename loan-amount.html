@@ -3,39 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
 <title>Loan Amount</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="success-box">
+    <div class="success-box">
+        <h1>You’re Pre-Approved!</h1>
+        <h2>₹2,50,000</h2>
+    </div>
 
-<h1>You're Pre-Approved!</h1>
+    <div class="loan-details">
 
-<div class="amount">₹2,50,000</div>
+        <p><strong>Loan Amount :</strong> ₹2,50,000</p>
 
-</div>
+        <p><strong>Interest :</strong> 2.5%</p>
 
-<div class="box">
+        <p><strong>EMI :</strong> ₹10,450</p>
 
-<p>Loan Amount : ₹2,50,000</p>
+        <p><strong>Document Fee :</strong> ₹2500</p>
 
-<p>Interest : 2.5%</p>
+    </div>
 
-<p>EMI : ₹10,450</p>
-
-<p>Document Fee : ₹2500</p>
-
-</div>
-
-<a href="pending.html">
-<button>Apply Loan</button>
-</a>
+    <button class="btn" onclick="applyLoan()">
+        Apply Loan
+    </button>
 
 </div>
+
+<script>
+function applyLoan() {
+    window.location.href = "pending-status.html";
+}
+</script>
 
 </body>
 </html>
