@@ -1,46 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document Upload</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="container">
+<h1>Upload Documents</h1>
 
-    <h1>Upload Documents</h1>
+<div class="upload-box">
+<h2>Upload Aadhaar Card</h2>
+<input type="file">
+</div>
 
-    <!-- Aadhaar -->
-    <div class="upload-box">
-        <h2>Upload Aadhaar Card</h2>
-        <input type="file" accept="image/*,.pdf">
-    </div>
+<div class="upload-box">
+<h2>Upload PAN Card</h2>
+<input type="file">
+</div>
 
-    <!-- PAN -->
-    <div class="upload-box">
-        <h2>Upload PAN Card</h2>
-        <input type="file" accept="image/*,.pdf">
-    </div>
+<div class="upload-box">
+<h2>Upload Passbook</h2>
+<input type="file">
+</div>
 
-    <!-- Passbook -->
-    <div class="upload-box">
-        <h2>Upload Passbook</h2>
-        <input type="file" accept="image/*,.pdf">
-    </div>
+<button onclick="startLoading()">Submit Documents</button>
 
-    <!-- Button -->
-    <button class="btn" onclick="nextPage()">
-        Submit Documents
-    </button>
+<div class="loading" id="loading">
+Verifying Documents... Please Wait...
+</div>
 
 </div>
 
 <script>
-function nextPage() {
-    window.location.href = "loan-amount.html";
+function startLoading(){
+
+document.getElementById('loading').style.display='block';
+
+setTimeout(()=>{
+window.location.href='loan-amount.html';
+},3000);
 }
 </script>
 
