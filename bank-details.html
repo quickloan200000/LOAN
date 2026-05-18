@@ -1,26 +1,176 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bank Details</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-<h1>Bank Details</h1>
+<div class="loan-page">
 
-<input type="text" placeholder="Account Holder Name">
-<input type="text" placeholder="Bank Name">
-<input type="text" placeholder="Account Number">
-<input type="text" placeholder="IFSC Code">
+    <div class="top-box">
+        <h1>Bank Details</h1>
+        <p>Enter your bank account information</p>
+    </div>
 
-<button onclick="nextPage()">Continue</button>
+    <div class="card">
+
+        <div class="approve-box">
+
+            <h2>🏦 Account Verification</h2>
+
+            <p>
+                Your bank details are required
+                for loan disbursement.
+            </p>
+
+        </div>
+
+        <div class="details-box">
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    Account Holder Name
+                </label>
+
+                <input
+                type="text"
+                id="holderName"
+                placeholder="Enter Account Holder Name"
+                style="margin-top:10px;">
+
+            </div>
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    Bank Name
+                </label>
+
+                <input
+                type="text"
+                id="bankName"
+                placeholder="Enter Bank Name"
+                style="margin-top:10px;">
+
+            </div>
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    Account Number
+                </label>
+
+                <input
+                type="number"
+                id="accountNumber"
+                placeholder="Enter Account Number"
+                style="margin-top:10px;">
+
+            </div>
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    IFSC Code
+                </label>
+
+                <input
+                type="text"
+                id="ifsc"
+                placeholder="Enter IFSC Code"
+                style="margin-top:10px;">
+
+            </div>
+
+        </div>
+
+        <button
+        class="apply-btn"
+        onclick="nextPage()">
+
+            Continue →
+
+        </button>
+
+    </div>
+
+</div>
+
+<div id="loadingScreen" class="loading-screen">
+
+    <div class="loader"></div>
+
+    <p>
+        Verifying Bank Details...
+    </p>
+
 </div>
 
 <script>
+
 function nextPage(){
-window.location.href='photo-upload.html';
+
+    let holder =
+    document.getElementById("holderName").value;
+
+    let bank =
+    document.getElementById("bankName").value;
+
+    let account =
+    document.getElementById("accountNumber").value;
+
+    let ifsc =
+    document.getElementById("ifsc").value;
+
+    if(
+    holder==="" ||
+    bank==="" ||
+    account==="" ||
+    ifsc===""){
+
+        alert("Please fill all bank details");
+
+        return;
+    }
+
+    localStorage.setItem(
+    "holderName",
+    holder
+    );
+
+    localStorage.setItem(
+    "bankName",
+    bank
+    );
+
+    localStorage.setItem(
+    "accountNumber",
+    account
+    );
+
+    localStorage.setItem(
+    "ifsc",
+    ifsc
+    );
+
+    document
+    .getElementById("loadingScreen")
+    .style.display = "flex";
+
+    setTimeout(function(){
+
+        window.location.href =
+        "photo-upload.html";
+
+    },2500);
+
 }
+
 </script>
 
 </body>
