@@ -22,19 +22,19 @@ min-height:100vh;
 width:100%;
 max-width:350px;
 background:white;
-padding:20px;
-border-radius:20px;
+padding:25px;
+border-radius:25px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 h2{
 text-align:center;
-margin-bottom:25px;
-font-size:32px;
+font-size:34px;
+margin-bottom:30px;
 }
 
 label{
-font-size:20px;
+font-size:22px;
 }
 
 input{
@@ -49,7 +49,7 @@ box-sizing:border-box;
 
 .row{
 margin-top:22px;
-font-size:22px;
+font-size:24px;
 }
 
 button{
@@ -161,7 +161,6 @@ let processingFee = 2500;
 
 let gst = 450;
 
-// EMI Calculation
 let totalInterest =
 (amount * interest / 100) * 3;
 
@@ -184,7 +183,6 @@ Math.round(total).toLocaleString('en-IN');
 
 }
 
-// first load
 calculate();
 
 function submitApplication(){
@@ -192,10 +190,10 @@ function submitApplication(){
 let amount =
 document.getElementById("amount").value;
 
-// save selected amount
+// SAVE AMOUNT
 localStorage.setItem("loanAmount", amount);
 
-// loading screen
+// LOADING PAGE
 document.body.innerHTML = `
 
 <div class="loader-page">
