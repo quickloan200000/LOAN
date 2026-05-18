@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phone Register</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-<h1>Phone Register</h1>
+<div class="card">
 
-<input type="text" placeholder="Enter Mobile Number">
+<h2>Register Mobile Number</h2>
 
-<button onclick="nextPage()">Continue</button>
+<input type="number" placeholder="Enter Mobile Number">
+
+<button onclick="nextPage()">
+Continue
+</button>
+
 </div>
 
 <script>
+
 function nextPage(){
-window.location.href='personal-details.html';
+
+document.body.innerHTML=`
+
+<div class="card">
+
+<div class="loader"></div>
+
+<h2>Please Wait...</h2>
+
+<p>Checking Number</p>
+
+</div>
+
+`;
+
+setTimeout(function(){
+
+window.location.href="personal-details.html";
+
+},3000);
+
 }
+
 </script>
 
 </body>
