@@ -1,27 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Employee Login</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:#eef2f7;
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.login-box{
+width:90%;
+max-width:380px;
+background:white;
+padding:30px;
+border-radius:22px;
+box-shadow:0 5px 25px rgba(0,0,0,0.08);
+}
+
+.login-box h1{
+text-align:center;
+margin-bottom:25px;
+font-size:30px;
+color:#1e293b;
+}
+
+.input-box{
+margin-bottom:18px;
+}
+
+.input-box input{
+width:100%;
+padding:15px;
+border-radius:12px;
+border:1px solid #ccc;
+font-size:16px;
+box-sizing:border-box;
+}
+
+.login-btn{
+width:100%;
+padding:15px;
+border:none;
+background:#2563eb;
+color:white;
+font-size:17px;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.login-btn:hover{
+background:#1d4ed8;
+}
+
+.loading-screen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999;
+}
+
+.loader{
+width:55px;
+height:55px;
+border:6px solid #ddd;
+border-top:6px solid #2563eb;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+.loading-screen p{
+margin-top:15px;
+font-size:18px;
+font-weight:bold;
+color:#1e293b;
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="login-box">
 
-<h2>Employee Login</h2>
+<h1>Employee Login</h1>
 
-<input type="text" placeholder="Employee ID">
+<div class="input-box">
+<input
+type="text"
+id="employeeId"
+placeholder="Employee ID">
+</div>
 
-<input type="password" placeholder="Password">
+<div class="input-box">
+<input
+type="password"
+id="password"
+placeholder="Password">
+</div>
 
-<a href="phone-register.html">
-<button>Login</button>
-</a>
+<button
+class="login-btn"
+onclick="login()">
+
+Login
+
+</button>
 
 </div>
+
+<div id="loadingScreen"
+class="loading-screen">
+
+<div class="loader"></div>
+
+<p>
+Checking Credentials...
+</p>
+
+</div>
+
+<script>
+
+function login(){
+
+let id =
+document.getElementById("employeeId").value;
+
+let pass =
+document.getElementById("password").value;
+
+if(
+id === "EMP001"
+&&
+pass === "admin123"
+){
+
+document
+.getElementById("loadingScreen")
+.style.display = "flex";
+
+setTimeout(function(){
+
+window.location.href =
+"phone-register.html";
+
+},2000);
+
+}
+
+else{
+
+alert(
+"Invalid Employee ID or Password"
+);
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
