@@ -29,18 +29,18 @@ text-align:center;
 }
 
 h2{
-font-size:26px;
+font-size:30px;
 margin-bottom:25px;
 }
 
 .amount{
-font-size:48px;
+font-size:52px;
 font-weight:bold;
 margin-bottom:35px;
 }
 
 .status{
-font-size:22px;
+font-size:24px;
 margin:20px 0;
 text-align:left;
 padding-left:20px;
@@ -54,6 +54,7 @@ border:none;
 border-radius:15px;
 font-size:24px;
 margin-top:35px;
+cursor:pointer;
 }
 
 </style>
@@ -99,16 +100,16 @@ Track Application
 
 <script>
 
-// localStorage ல இருந்து amount எடுக்குது
+// GET SAVED AMOUNT
 let amount =
 localStorage.getItem("loanAmount");
 
-// amount இல்லனா default
+// DEFAULT
 if(!amount){
 amount = 50000;
 }
 
-// display amount
+// SHOW AMOUNT
 document.getElementById("loanAmount").innerHTML =
 "₹" + Number(amount).toLocaleString('en-IN');
 
