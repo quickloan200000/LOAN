@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
@@ -10,78 +12,189 @@ content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 href="style.css">
 
+<style>
+
+body{
+margin:0;
+padding:0;
+background:#eef2f7;
+font-family:sans-serif;
+}
+
+.loan-page{
+padding:25px 20px;
+}
+
+.top-box{
+margin-top:60px;
+margin-bottom:30px;
+}
+
+.top-box h1{
+font-size:42px;
+margin-bottom:15px;
+color:#111;
+}
+
+.top-box p{
+font-size:20px;
+color:#333;
+}
+
+.card{
+background:white;
+border-radius:35px;
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.detail-row{
+margin-bottom:25px;
+}
+
+.detail-row label{
+display:block;
+font-size:22px;
+font-weight:bold;
+margin-bottom:12px;
+color:#111;
+}
+
+.detail-row input{
+width:100%;
+height:68px;
+border-radius:20px;
+border:2px solid #ddd;
+padding:0 20px;
+font-size:22px;
+box-sizing:border-box;
+outline:none;
+background:#f7f9fc;
+}
+
+.apply-btn{
+width:100%;
+height:75px;
+border:none;
+border-radius:25px;
+background:#ffc400;
+font-size:32px;
+font-weight:bold;
+margin-top:20px;
+cursor:pointer;
+color:#111;
+}
+
+.loading-screen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,0.96);
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999;
+}
+
+.loader{
+width:95px;
+height:95px;
+border:10px solid #e5e5e5;
+border-top:10px solid #ffd500;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin-bottom:25px;
+}
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+.loading-screen p{
+font-size:34px;
+font-weight:bold;
+color:#111;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <div class="loan-page">
 
-    <div class="top-box">
+<div class="top-box">
 
-        <h1>
-            Alternate Numbers
-        </h1>
+<h1>
+Alternate Numbers
+</h1>
 
-        <p>
-            Add alternate contact details
-        </p>
+<p>
+Add alternate contact details
+</p>
 
-    </div>
+</div>
 
-    <div class="card">
+<div class="card">
 
-        <div class="details-box">
+<div class="details-box">
 
-            <div class="detail-row"
-            style="border:none;display:block;">
+<div class="detail-row">
 
-                <label>
-                    Alternate Number
-                </label>
+<label>
+Alternate Number
+</label>
 
-                <input
-                type="number"
-                id="alternate"
-                placeholder="Enter Alternate Number">
+<input
+type="number"
+id="alternate"
+placeholder="Enter Alternate Number">
 
-            </div>
+</div>
 
-            <div class="detail-row"
-            style="border:none;display:block;">
+<div class="detail-row">
 
-                <label>
-                    Emergency Contact
-                </label>
+<label>
+Emergency Contact
+</label>
 
-                <input
-                type="number"
-                id="emergency"
-                placeholder="Enter Emergency Contact">
+<input
+type="number"
+id="emergency"
+placeholder="Enter Emergency Contact">
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <button
-        class="apply-btn"
-        onclick="nextPage()">
+<button
+class="apply-btn"
+onclick="nextPage()">
 
-            Continue →
+Continue →
 
-        </button>
+</button>
 
-    </div>
+</div>
 
 </div>
 
 <div id="loadingScreen"
 class="loading-screen">
 
-    <div class="loader"></div>
+<div class="loader"></div>
 
-    <p>
-        Saving Contact Details...
-    </p>
+<p>
+Saving Contact Details...
+</p>
 
 </div>
 
@@ -105,7 +218,7 @@ authDomain: "loan-19007.firebaseapp.com",
 
 projectId: "loan-19007",
 
-storageBucket: "loan-19007.firebasestorage.app",
+storageBucket: "loan-19007.appspot.com",
 
 messagingSenderId: "175686513150",
 
@@ -123,10 +236,25 @@ window.nextPage =
 async function(){
 
 let alternate =
-document.getElementById("alternate").value;
+document.getElementById("alternate")
+.value.trim();
 
 let emergency =
-document.getElementById("emergency").value;
+document.getElementById("emergency")
+.value.trim();
+
+if(
+alternate.length != 10 ||
+emergency.length != 10
+){
+
+alert(
+"Enter valid 10 digit numbers"
+);
+
+return;
+
+}
 
 let phone =
 localStorage.getItem(
@@ -138,7 +266,8 @@ doc(db,"loanApplications",phone),
 {
 
 alternateNumber:alternate,
-emergencyContact:emergency
+emergencyContact:emergency,
+status:"Alternate Numbers Added"
 
 },
 {merge:true}
