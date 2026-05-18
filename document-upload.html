@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Document Upload</title>
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="style.css">
 </head>
 
 <body>
@@ -13,14 +17,19 @@
 
     <div class="top-box">
         <h1>Document Upload</h1>
-        <p>Upload your required KYC documents</p>
+
+        <p>
+            Upload your required KYC documents
+        </p>
     </div>
 
     <div class="card">
 
         <div class="approve-box">
 
-            <h2>📄 Verify Your Documents</h2>
+            <h2>
+                📄 Verify Your Documents
+            </h2>
 
             <p>
                 Upload clear images or PDF files
@@ -31,45 +40,45 @@
 
         <div class="details-box">
 
-            <div class="detail-row" style="border:none;display:block;">
+            <div class="detail-row"
+            style="display:block;border:none;">
 
-                <label style="font-size:18px;font-weight:bold;">
+                <label>
                     Aadhaar Card
                 </label>
 
                 <input
                 type="file"
                 id="aadhaar"
-                accept="image/*,.pdf"
-                style="margin-top:10px;">
+                accept="image/*,.pdf">
 
             </div>
 
-            <div class="detail-row" style="border:none;display:block;">
+            <div class="detail-row"
+            style="display:block;border:none;">
 
-                <label style="font-size:18px;font-weight:bold;">
+                <label>
                     PAN Card
                 </label>
 
                 <input
                 type="file"
                 id="pan"
-                accept="image/*,.pdf"
-                style="margin-top:10px;">
+                accept="image/*,.pdf">
 
             </div>
 
-            <div class="detail-row" style="border:none;display:block;">
+            <div class="detail-row"
+            style="display:block;border:none;">
 
-                <label style="font-size:18px;font-weight:bold;">
+                <label>
                     Bank Passbook
                 </label>
 
                 <input
                 type="file"
                 id="passbook"
-                accept="image/*,.pdf"
-                style="margin-top:10px;">
+                accept="image/*,.pdf">
 
             </div>
 
@@ -87,7 +96,8 @@
 
 </div>
 
-<div id="loadingScreen" class="loading-screen">
+<div id="loadingScreen"
+class="loading-screen">
 
     <div class="loader"></div>
 
@@ -101,24 +111,10 @@
 
 function nextPage(){
 
-    let aadhaar =
-    document.getElementById("aadhaar").files.length;
-
-    let pan =
-    document.getElementById("pan").files.length;
-
-    let passbook =
-    document.getElementById("passbook").files.length;
-
-    if(
-    aadhaar===0 ||
-    pan===0 ||
-    passbook===0){
-
-        alert("Please upload all required documents");
-
-        return;
-    }
+    localStorage.setItem(
+    "documentsUploaded",
+    "yes"
+    );
 
     document
     .getElementById("loadingScreen")
