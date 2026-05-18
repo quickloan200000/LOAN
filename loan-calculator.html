@@ -1,101 +1,373 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Loan Calculator</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+
+.top{
+background:#232b8f;
+padding:30px 20px;
+border-bottom-left-radius:40px;
+border-bottom-right-radius:40px;
+text-align:center;
+color:white;
+}
+
+.top h1{
+margin:0;
+font-size:34px;
+}
+
+.top p{
+margin-top:8px;
+font-size:18px;
+opacity:0.9;
+}
+
+.loan-box{
+width:90%;
+max-width:420px;
+margin:25px auto;
+background:#dff0df;
+padding:25px;
+border-radius:25px;
+text-align:center;
+}
+
+.loan-box h2{
+color:#1d6d2b;
+margin:10px 0;
+}
+
+.big-amount{
+font-size:55px;
+font-weight:bold;
+color:#10651d;
+margin:15px 0;
+}
+
+.slider-area{
+width:90%;
+max-width:420px;
+margin:30px auto;
+text-align:center;
+}
+
+#amountText{
+font-size:28px;
+font-weight:bold;
+color:#232b8f;
+}
+
+.range{
+width:100%;
+margin-top:20px;
+accent-color:#ffd600;
+}
+
+.range-values{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+font-size:18px;
+color:#666;
+}
+
+.tenure{
+width:90%;
+max-width:420px;
+margin:30px auto;
+}
+
+.tenure h3{
+margin-bottom:20px;
+}
+
+.tenure-buttons{
+display:flex;
+gap:15px;
+}
+
+.tenure-btn{
+flex:1;
+padding:18px;
+border-radius:18px;
+border:2px solid #232b8f;
+background:white;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.tenure-btn span{
+display:block;
+font-size:16px;
+font-weight:normal;
+margin-top:5px;
+}
+
+.active{
+background:#e7e9ff;
+}
+
+.details{
+width:90%;
+max-width:420px;
+margin:20px auto;
+background:#f3f3f7;
+padding:20px;
+border-radius:25px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+padding:15px 0;
+border-bottom:1px solid #ddd;
+font-size:20px;
+}
+
+.row:last-child{
+border:none;
+}
+
+.apply-btn{
+width:90%;
+max-width:420px;
+display:block;
+margin:25px auto;
+padding:18px;
+border:none;
+border-radius:18px;
+background:#ffd600;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.loading{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+flex-direction:column;
+}
+
+.loader{
+width:60px;
+height:60px;
+border:6px solid #eee;
+border-top:6px solid #232b8f;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="loading" id="loading">
+<div class="loader"></div>
+<h2>Please Wait...</h2>
+</div>
 
-<h2>₹2,50,000 Eligible</h2>
+<div class="top">
+<h1>Loan Amount</h1>
+<p>Select your loan amount and tenure</p>
+</div>
+
+<div class="loan-box">
+<h2>✅ You're Pre-Approved!</h2>
+
+<div class="big-amount">
+₹<span id="topAmount">50,000</span>
+</div>
+
+<p>Maximum loan amount based on your profile</p>
+</div>
+
+<div class="slider-area">
+
+<div id="amountText">
+₹50,000
+</div>
 
 <input
-type="number"
-id="amount"
+type="range"
+min="1000"
+max="50000"
 value="50000"
-oninput="calculate()"
+step="1000"
+class="range"
+id="loanSlider"
+oninput="updateLoan()"
 >
 
-<div class="row">
-Interest : 2.5%
+<div class="range-values">
+<span>₹1,000</span>
+<span>₹50,000</span>
 </div>
 
-<div class="row">
-Tenure : 36 Months
 </div>
 
-<div class="row">
-Processing Fee : ₹2500
-</div>
+<div class="tenure">
 
-<div class="row">
-GST : ₹450
-</div>
+<h3>Choose Repayment Tenure</h3>
 
-<div class="row">
-Monthly EMI : ₹<span id="emi"></span>
-</div>
+<div class="tenure-buttons">
 
-<div class="row">
-Total Repayment : ₹<span id="total"></span>
-</div>
+<button class="tenure-btn"
+onclick="setTenure(3,this)">
+3
+<span>Months</span>
+</button>
 
-<button onclick="submitApplication()">
-Submit Application
+<button class="tenure-btn"
+onclick="setTenure(6,this)">
+6
+<span>Months</span>
+</button>
+
+<button class="tenure-btn active"
+onclick="setTenure(12,this)">
+12
+<span>Months</span>
 </button>
 
 </div>
 
+</div>
+
+<div class="details">
+
+<div class="row">
+<span>Loan Amount</span>
+<b>₹<span id="loanAmount">50,000</span></b>
+</div>
+
+<div class="row">
+<span>Interest Rate</span>
+<b>2.5% per month</b>
+</div>
+
+<div class="row">
+<span>Monthly EMI</span>
+<b>₹<span id="emi">4,874</span></b>
+</div>
+
+<div class="row">
+<span>Processing Fee</span>
+<b style="color:red">
+₹<span id="fee">250</span>
+</b>
+</div>
+
+</div>
+
+<button
+class="apply-btn"
+onclick="applyLoan()">
+✅ Apply for Loan
+</button>
+
 <script>
 
-function calculate(){
+let tenure = 12;
+
+function setTenure(months,btn){
+
+tenure = months;
+
+document
+.querySelectorAll('.tenure-btn')
+.forEach(b=>b.classList.remove('active'));
+
+btn.classList.add('active');
+
+updateLoan();
+
+}
+
+function updateLoan(){
 
 let amount =
-parseInt(document.getElementById("amount").value) || 0;
-
-let annualInterest = 12;
-
-let months = 36;
-
-let processingFee = 2500;
-
-let gst = 450;
-
-// monthly interest
-let r = annualInterest / 12 / 100;
-
-// EMI Formula
-let emi =
-Math.round(
-(amount * r * Math.pow(1+r,months)) /
-(Math.pow(1+r,months)-1)
+parseInt(
+document.getElementById('loanSlider').value
 );
 
-let total =
-(emi * months)
-+
-processingFee
-+
-gst;
+document.getElementById('topAmount')
+.innerHTML =
+amount.toLocaleString('en-IN');
 
-document.getElementById("emi").innerHTML =
+document.getElementById('amountText')
+.innerHTML =
+'₹' + amount.toLocaleString('en-IN');
+
+document.getElementById('loanAmount')
+.innerHTML =
+amount.toLocaleString('en-IN');
+
+let interest = 2.5;
+
+let total =
+amount +
+(amount * interest/100 * tenure);
+
+let emi =
+Math.round(total / tenure);
+
+let fee =
+Math.round(amount * 0.005);
+
+document.getElementById('emi')
+.innerHTML =
 emi.toLocaleString('en-IN');
 
-document.getElementById("total").innerHTML =
-total.toLocaleString('en-IN');
+document.getElementById('fee')
+.innerHTML =
+fee.toLocaleString('en-IN');
 
 localStorage.setItem(
-"loanAmount",
+'loanAmount',
 amount.toLocaleString('en-IN')
 );
 
 }
 
-calculate();
+updateLoan();
+
+function applyLoan(){
+
+document.getElementById('loading')
+.style.display='flex';
+
+setTimeout(()=>{
+
+window.location.href =
+'pending-status.html';
+
+},2000);
+
+}
 
 </script>
 
