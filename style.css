@@ -1,7 +1,7 @@
 body{
 margin:0;
 padding:20px;
-font-family:'Poppins',sans-serif;
+font-family:Arial,sans-serif;
 background:linear-gradient(135deg,#f5f7fa,#d7e1ec);
 display:flex;
 justify-content:center;
@@ -15,74 +15,55 @@ width:90%;
 max-width:400px;
 background:#fff;
 padding:25px;
-border-radius:24px;
-box-shadow:0 10px 25px rgba(0,0,0,0.12);
-animation:fade 0.4s ease;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+text-align:center;
 }
 
 h1,h2,h3{
-text-align:center;
-margin-bottom:20px;
+margin:10px 0 20px;
 color:#111;
-}
-
-.amount{
-font-size:38px;
-font-weight:bold;
-text-align:center;
-color:#16a34a;
-margin:15px 0;
 }
 
 input,select{
 width:100%;
 padding:14px;
 margin-top:12px;
-border:1px solid #ccc;
 border-radius:12px;
+border:1px solid #ccc;
 font-size:16px;
 box-sizing:border-box;
 outline:none;
 }
 
-input:focus,
-select:focus{
-border-color:#ffcc00;
-box-shadow:0 0 5px rgba(255,204,0,0.5);
-}
-
-.row{
-margin-top:16px;
-font-size:18px;
-}
-
 button{
 width:100%;
 padding:15px;
-margin-top:25px;
+margin-top:22px;
 border:none;
 border-radius:14px;
 background:linear-gradient(90deg,#ffd600,#ffb300);
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
-transition:0.3s;
 }
 
-button:hover{
-transform:scale(1.02);
+.row{
+font-size:18px;
+margin:15px 0;
+text-align:left;
+}
+
+.amount{
+font-size:40px;
+font-weight:bold;
+color:#16a34a;
+margin:20px 0;
+}
+
+.status{
+text-align:left;
+margin-top:20px;
 }
 
 .status p{
@@ -92,4 +73,20 @@ margin:14px 0;
 
 a{
 text-decoration:none;
+}
+
+.loader{
+width:70px;
+height:70px;
+border:8px solid #eee;
+border-top:8px solid #ffd600;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:30px auto;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
 }
