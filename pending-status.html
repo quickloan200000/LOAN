@@ -2,73 +2,142 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Pending Status</title>
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="style.css">
+
 </head>
 
 <body>
 
-<div class="card">
+<div class="loan-page">
 
-    <h3 style="color:#f59e0b;">PENDING APPROVAL</h3>
+    <div class="top-box">
 
-    <h1>
-        Application Submitted Successfully
-    </h1>
+        <h1>
+            Loan Status
+        </h1>
 
-    <div class="amount" id="loanAmount">
-        ₹0
-    </div>
-
-    <div class="status">
-
-        <p class="success">
-            ✅ Application Submitted
-        </p>
-
-        <p class="success">
-            ✅ Documents Verified
-        </p>
-
-        <p class="success">
-            ✅ KYC Verified
-        </p>
-
-        <p class="pending">
-            ⏳ RBI Review Pending
-        </p>
-
-        <p class="pending">
-            ⏳ Approval Pending
-        </p>
-
-        <p class="pending">
-            ⏳ Disbursement Pending
+        <p>
+            Your application is under review
         </p>
 
     </div>
 
-    <button onclick="trackApp()">
-        Track Application
-    </button>
+    <div class="card">
+
+        <h3 style="color:#f59e0b;">
+
+            PENDING APPROVAL
+
+        </h3>
+
+        <h1>
+
+            Application Submitted Successfully
+
+        </h1>
+
+        <div
+        class="amount"
+        id="loanAmount">
+
+            ₹0
+
+        </div>
+
+        <div class="status">
+
+            <p class="success">
+
+                ✅ Application Submitted
+
+            </p>
+
+            <p class="success">
+
+                ✅ Documents Verified
+
+            </p>
+
+            <p class="success">
+
+                ✅ KYC Verified
+
+            </p>
+
+            <p class="pending">
+
+                ⏳ RBI Review Pending
+
+            </p>
+
+            <p class="pending">
+
+                ⏳ Approval Pending
+
+            </p>
+
+            <p class="pending">
+
+                ⏳ Disbursement Pending
+
+            </p>
+
+        </div>
+
+        <button onclick="trackApp()">
+
+            Track Application
+
+        </button>
+
+        <button
+        class="track-btn"
+        onclick="openNewApplication()"
+        style="margin-top:15px;">
+
+            🆕 New Application
+
+        </button>
+
+    </div>
 
 </div>
 
 <script>
 
-const savedAmount = localStorage.getItem("loanAmount");
+const savedAmount =
+localStorage.getItem("loanAmount");
 
 if(savedAmount){
 
-    document.getElementById("loanAmount").innerText =
-    "₹" + parseInt(savedAmount).toLocaleString();
+document
+.getElementById("loanAmount")
+.innerText =
+
+"₹" +
+parseInt(savedAmount)
+.toLocaleString();
 
 }
 
 function trackApp(){
 
-    alert("Application is under review");
+alert(
+"Application is under review"
+);
+
+}
+
+function openNewApplication(){
+
+window.location.href =
+"phone-register.html";
 
 }
 
