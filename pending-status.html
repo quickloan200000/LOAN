@@ -1,120 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Application Status</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-
-body{
-margin:0;
-padding:0;
-background:#f3f3f3;
-font-family:sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-
-.card{
-width:320px;
-background:white;
-padding:25px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-.loader{
-width:70px;
-height:70px;
-border:8px solid #ddd;
-border-top:8px solid #ffd500;
-border-radius:50%;
-animation:spin 1s linear infinite;
-margin:auto;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-.hidden{
-display:none;
-}
-
-button{
-width:100%;
-padding:15px;
-background:#ffd500;
-border:none;
-border-radius:12px;
-font-size:18px;
-margin-top:20px;
-}
-
-.status{
-margin-top:15px;
-font-size:17px;
-}
-
-</style>
+    <title>Application Status</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="card">
+<div class="container">
 
-<div id="loading">
+    <div class="card">
 
-<div class="loader"></div>
+        <h2>Application Submitted Successfully</h2>
 
-<h2>Please Wait...</h2>
+        <h1 id="loanAmount">₹0</h1>
 
-<p>Submitting Application...</p>
+        <div class="status-list">
 
-</div>
+            <p>✔ Documents Verified</p>
 
-<div id="success" class="hidden">
+            <p>✔ KYC Verified</p>
 
-<h2>Application Submitted Successfully</h2>
+            <p>⏳ RBI Review Pending</p>
 
-<h1>₹2,50,000</h1>
+            <p>⏳ Approval Pending</p>
 
-<div class="status">✔ Documents Verified</div>
+            <p>⏳ Disbursement Pending</p>
 
-<div class="status">✔ KYC Verified</div>
+        </div>
 
-<div class="status">⏳ RBI Review Pending</div>
+        <button onclick="trackApplication()">
+            Track Application
+        </button>
 
-<div class="status">⏳ Approval Pending</div>
-
-<div class="status">⏳ Disbursement Pending</div>
-
-<button>
-Track Application
-</button>
-
-</div>
+    </div>
 
 </div>
 
 <script>
 
-setTimeout(function(){
+    // loan-calculator page ல இருந்து amount எடுக்குது
+    let amount = localStorage.getItem("loanAmount");
 
-document.getElementById("loading").style.display =
-"none";
+    // amount இல்லனா default
+    if(!amount){
+        amount = 250000;
+    }
 
-document.getElementById("success").classList.remove(
-"hidden"
-);
+    // ரூபாய் format
+    document.getElementById("loanAmount").innerHTML =
+        "₹" + Number(amount).toLocaleString('en-IN');
 
-},3000);
+    function trackApplication(){
+        alert("Application Under Review");
+    }
 
 </script>
 
