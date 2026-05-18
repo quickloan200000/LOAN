@@ -1,202 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Loan Calculator</title>
 
-<link rel="stylesheet"
-href="style.css">
+<link rel="stylesheet" href="style.css">
 
 <style>
 
-body{
-margin:0;
-padding:0;
-background:#eef2f7;
-font-family:sans-serif;
-}
-
-.loan-page{
-padding:25px 20px;
-}
-
-.top-box{
-margin-top:50px;
-margin-bottom:30px;
-}
-
-.top-box h1{
-font-size:42px;
-margin-bottom:15px;
-color:#111;
-}
-
-.top-box p{
-font-size:20px;
-color:#444;
-}
-
-.card{
-background:white;
-border-radius:35px;
-padding:30px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-
-.approve-box{
-text-align:center;
-margin-bottom:30px;
-}
-
-.approve-box h2{
-font-size:34px;
-margin-bottom:20px;
-color:green;
-}
-
-.big-amount{
-font-size:58px;
-font-weight:bold;
-color:#111;
-margin:20px 0;
-}
-
-.approve-box p{
-font-size:20px;
-line-height:32px;
-color:#555;
-}
-
-.loan-value{
-font-size:50px;
-font-weight:bold;
-text-align:center;
-margin:30px 0;
-color:#111;
-}
-
-input[type=range]{
-width:100%;
-height:12px;
-}
-
-.range-label{
-display:flex;
-justify-content:space-between;
-font-size:18px;
-margin-top:10px;
-color:#555;
-}
-
-.tenure-title{
-margin-top:35px;
-font-size:28px;
-}
-
-.tenure-box{
-display:flex;
-gap:15px;
-margin-top:20px;
-}
-
-.tenure{
-flex:1;
-height:90px;
-border:none;
-border-radius:22px;
-background:#f2f4f8;
-font-size:20px;
-cursor:pointer;
-}
-
-.tenure strong{
-font-size:30px;
-}
-
-.tenure.active{
-background:#ffd500;
-color:#111;
-font-weight:bold;
-}
-
-.details-box{
-margin-top:35px;
-background:#f8fafc;
-border-radius:25px;
-padding:20px;
-}
-
-.detail-row{
-display:flex;
-justify-content:space-between;
-padding:18px 0;
-border-bottom:1px solid #ddd;
-font-size:22px;
-}
-
-.detail-row:last-child{
-border-bottom:none;
-}
-
-.fee{
-color:red;
-font-weight:bold;
-}
-
-.apply-btn{
-width:100%;
-height:75px;
-border:none;
-border-radius:25px;
-background:#ffd500;
-font-size:30px;
-font-weight:bold;
-margin-top:30px;
-cursor:pointer;
-color:#111;
-}
-
 .loading-screen{
+display:none;
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(255,255,255,0.96);
-display:none;
+background:rgba(255,255,255,0.95);
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:999;
+z-index:9999;
 }
 
 .loader{
-width:95px;
-height:95px;
-border:10px solid #e5e5e5;
-border-top:10px solid #ffd500;
+width:70px;
+height:70px;
+border:8px solid #eee;
+border-top:8px solid #ffd500;
 border-radius:50%;
 animation:spin 1s linear infinite;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 @keyframes spin{
-
 100%{
 transform:rotate(360deg);
 }
-
 }
 
-.loading-screen p{
-font-size:34px;
-font-weight:bold;
-color:#111;
+.tenure.active{
+background:#ffd500;
+color:black;
 }
 
 </style>
@@ -208,27 +54,17 @@ color:#111;
 <div class="loan-page">
 
 <div class="top-box">
-
-<h1>
-Loan Amount
-</h1>
-
-<p>
-Select your loan amount and tenure
-</p>
-
+<h1>Loan Amount</h1>
+<p>Select your loan amount and tenure</p>
 </div>
 
 <div class="card">
 
 <div class="approve-box">
 
-<h2>
-✅ You're Pre-Approved!
-</h2>
+<h2>✅ You're Pre-Approved!</h2>
 
-<div class="big-amount"
-id="maxAmount">
+<div class="big-amount">
 ₹2,50,000
 </div>
 
@@ -238,29 +74,21 @@ Maximum loan amount based on your profile
 
 </div>
 
-<div class="loan-value"
-id="loanValue">
-₹7,000
+<div class="loan-value" id="loanValue">
+₹2,50,000
 </div>
 
 <input
 type="range"
 min="1000"
 max="250000"
-value="7000"
+value="250000"
 step="1000"
 id="loanSlider">
 
 <div class="range-label">
-
-<span>
-₹1,000
-</span>
-
-<span id="maxLabel">
-₹2,50,000
-</span>
-
+<span>₹1,000</span>
+<span>₹2,50,000</span>
 </div>
 
 <h3 class="tenure-title">
@@ -301,64 +129,43 @@ Months
 <div class="details-box">
 
 <div class="detail-row">
-
-<span>
-Loan Amount
-</span>
+<span>Loan Amount</span>
 
 <span id="loanAmt">
-₹7,000
+₹2,50,000
 </span>
-
 </div>
 
 <div class="detail-row">
-
-<span>
-Interest Rate
-</span>
+<span>Interest Rate</span>
 
 <span>
 1% per month
 </span>
-
 </div>
 
 <div class="detail-row">
-
-<span>
-Monthly EMI
-</span>
+<span>Monthly EMI</span>
 
 <span id="emi">
-₹2,357
+₹84,167
 </span>
-
 </div>
 
 <div class="detail-row">
-
-<span>
-Total Repayment
-</span>
+<span>Total Repayment</span>
 
 <span id="totalPay">
-₹7,070
+₹2,57,500
 </span>
-
 </div>
 
 <div class="detail-row">
+<span>Processing Fee</span>
 
-<span>
-Processing Fee
+<span class="fee" id="fee">
+₹1,250
 </span>
-
-<span class="fee"
-id="fee">
-₹250
-</span>
-
 </div>
 
 </div>
@@ -375,8 +182,7 @@ onclick="goNext()">
 
 </div>
 
-<div id="loadingScreen"
-class="loading-screen">
+<div id="loadingScreen" class="loading-screen">
 
 <div class="loader"></div>
 
@@ -386,77 +192,21 @@ Processing Application...
 
 </div>
 
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-getFirestore,
-doc,
-setDoc
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyCajHdn60cCNoivFXrpPOh0xRNRY_rinMQ",
-
-authDomain: "loan-19007.firebaseapp.com",
-
-projectId: "loan-19007",
-
-storageBucket: "loan-19007.appspot.com",
-
-messagingSenderId: "175686513150",
-
-appId: "1:175686513150:web:f25e43507db445998d10af"
-
-};
-
-const app =
-initializeApp(firebaseConfig);
-
-const db =
-getFirestore(app);
+<script>
 
 let tenure = 3;
 
 let interest = 0.01;
 
-let approvedAmount =
-parseInt(
-localStorage.getItem("loanAmount")
-) || 250000;
-
-document
-.getElementById("maxAmount")
-.innerText =
-"₹" +
-approvedAmount.toLocaleString();
-
-document
-.getElementById("maxLabel")
-.innerText =
-"₹" +
-approvedAmount.toLocaleString();
-
 const slider =
 document.getElementById("loanSlider");
-
-slider.max =
-approvedAmount;
-
-slider.value =
-Math.min(7000, approvedAmount);
 
 slider.addEventListener(
 "input",
 calculateLoan
 );
 
-window.setTenure =
-function(months, btn){
+function setTenure(months, btn){
 
 tenure = months;
 
@@ -474,8 +224,7 @@ calculateLoan();
 
 }
 
-window.calculateLoan =
-function(){
+function calculateLoan(){
 
 let amount =
 parseInt(slider.value);
@@ -490,27 +239,22 @@ let totalRepayment =
 amount + totalInterest;
 
 let emi =
-Math.round(
-totalRepayment / tenure
-);
+Math.round(totalRepayment / tenure);
 
 document
 .getElementById("loanValue")
 .innerText =
-"₹" +
-amount.toLocaleString();
+"₹" + amount.toLocaleString();
 
 document
 .getElementById("loanAmt")
 .innerText =
-"₹" +
-amount.toLocaleString();
+"₹" + amount.toLocaleString();
 
 document
 .getElementById("emi")
 .innerText =
-"₹" +
-emi.toLocaleString();
+"₹" + emi.toLocaleString();
 
 document
 .getElementById("totalPay")
@@ -529,33 +273,10 @@ processingFee.toLocaleString();
 
 calculateLoan();
 
-window.goNext =
-async function(){
+function goNext(){
 
 let amount =
 parseInt(slider.value);
-
-let processingFee =
-Math.round(amount * 0.005);
-
-let phone =
-localStorage.getItem(
-"customerPhone"
-);
-
-await setDoc(
-doc(db,"loanApplications",phone),
-{
-
-selectedLoanAmount:amount,
-selectedTenure:tenure,
-processingFee:processingFee,
-monthlyInterest:"1%",
-status:"Loan Applied"
-
-},
-{merge:true}
-);
 
 localStorage.setItem(
 "loanAmount",
@@ -571,7 +292,7 @@ setTimeout(()=>{
 window.location.href =
 "pending-status.html";
 
-},3000);
+},2500);
 
 }
 
