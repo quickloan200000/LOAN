@@ -20,11 +20,19 @@
 
         <div class="approve-box">
             <h2>✅ You're Pre-Approved!</h2>
-            <div class="big-amount">₹2,50,000</div>
-            <p>Maximum loan amount based on your profile</p>
+
+            <div class="big-amount">
+                ₹2,50,000
+            </div>
+
+            <p>
+                Maximum loan amount based on your profile
+            </p>
         </div>
 
-        <div class="loan-value" id="loanValue">₹7,000</div>
+        <div class="loan-value" id="loanValue">
+            ₹7,000
+        </div>
 
         <input
         type="range"
@@ -45,19 +53,31 @@
 
         <div class="tenure-box">
 
-            <button class="tenure active"
+            <button
+            class="tenure active"
             onclick="setTenure(3,this)">
-                <strong>3</strong><br>Months
+
+                <strong>3</strong><br>
+                Months
+
             </button>
 
-            <button class="tenure"
+            <button
+            class="tenure"
             onclick="setTenure(6,this)">
-                <strong>6</strong><br>Months
+
+                <strong>6</strong><br>
+                Months
+
             </button>
 
-            <button class="tenure"
+            <button
+            class="tenure"
             onclick="setTenure(12,this)">
-                <strong>12</strong><br>Months
+
+                <strong>12</strong><br>
+                Months
+
             </button>
 
         </div>
@@ -66,33 +86,52 @@
 
             <div class="detail-row">
                 <span>Loan Amount</span>
-                <span id="loanAmt">₹7,000</span>
+
+                <span id="loanAmt">
+                    ₹7,000
+                </span>
             </div>
 
             <div class="detail-row">
                 <span>Interest Rate</span>
-                <span>1% per month</span>
+
+                <span>
+                    1% per month
+                </span>
             </div>
 
             <div class="detail-row">
                 <span>Monthly EMI</span>
-                <span id="emi">₹2,357</span>
+
+                <span id="emi">
+                    ₹2,357
+                </span>
             </div>
 
             <div class="detail-row">
                 <span>Total Repayment</span>
-                <span id="totalPay">₹7,070</span>
+
+                <span id="totalPay">
+                    ₹7,070
+                </span>
             </div>
 
             <div class="detail-row">
                 <span>Processing Fee</span>
-                <span class="fee" id="fee">₹250</span>
+
+                <span class="fee" id="fee">
+                    ₹250
+                </span>
             </div>
 
         </div>
 
-        <button class="apply-btn" onclick="goNext()">
+        <button
+        class="apply-btn"
+        onclick="goNext()">
+
             ✅ Apply for Loan
+
         </button>
 
     </div>
@@ -100,27 +139,39 @@
 </div>
 
 <div id="loadingScreen" class="loading-screen">
+
     <div class="loader"></div>
-    <p>Processing Application...</p>
+
+    <p>
+        Processing Application...
+    </p>
+
 </div>
 
 <script>
 
 let tenure = 3;
+
 let interest = 0.01;
 
 const slider =
 document.getElementById("loanSlider");
 
-slider.addEventListener("input", calculateLoan);
+slider.addEventListener(
+"input",
+calculateLoan
+);
 
 function setTenure(months, btn){
 
     tenure = months;
 
-    document.querySelectorAll(".tenure")
+    document
+    .querySelectorAll(".tenure")
     .forEach(b=>{
+
         b.classList.remove("active");
+
     });
 
     btn.classList.add("active");
@@ -145,38 +196,56 @@ function calculateLoan(){
     let emi =
     Math.round(totalRepayment / tenure);
 
-    document.getElementById("loanValue")
+    document
+    .getElementById("loanValue")
     .innerText =
     "₹" + amount.toLocaleString();
 
-    document.getElementById("loanAmt")
+    document
+    .getElementById("loanAmt")
     .innerText =
     "₹" + amount.toLocaleString();
 
-    document.getElementById("emi")
+    document
+    .getElementById("emi")
     .innerText =
     "₹" + emi.toLocaleString();
 
-    document.getElementById("totalPay")
+    document
+    .getElementById("totalPay")
     .innerText =
-    "₹" + Math.round(totalRepayment)
+    "₹" +
+    Math.round(totalRepayment)
     .toLocaleString();
 
-    document.getElementById("fee")
+    document
+    .getElementById("fee")
     .innerText =
-    "₹" + processingFee.toLocaleString();
+    "₹" +
+    processingFee.toLocaleString();
 }
 
 calculateLoan();
 
 function goNext(){
 
-    document.getElementById("loadingScreen")
+    let amount =
+    parseInt(slider.value);
+
+    localStorage.setItem(
+    "loanAmount",
+    amount
+    );
+
+    document
+    .getElementById("loadingScreen")
     .style.display = "flex";
 
     setTimeout(()=>{
+
         window.location.href =
         "pending-status.html";
+
     },2000);
 }
 
