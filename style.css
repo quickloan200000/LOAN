@@ -1,147 +1,132 @@
-body{
+*{
 margin:0;
 padding:0;
-font-family:Arial,sans-serif;
+box-sizing:border-box;
+font-family: sans-serif;
+}
+
+body{
 background:#eef2f7;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
+padding:20px;
 }
 
 .loan-page{
-width:100%;
-display:flex;
-justify-content:center;
-padding:20px;
-box-sizing:border-box;
-}
-
-.card{
-width:100%;
-max-width:420px;
-background:#fff;
-padding:25px;
-border-radius:30px;
-box-shadow:0 10px 30px rgba(0,0,0,0.12);
-box-sizing:border-box;
-animation:fade 0.4s ease;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+max-width:500px;
+margin:auto;
 }
 
 .top-box{
-background:#2d2fa3;
-padding:35px 20px;
-border-radius:0 0 35px 35px;
+background:#1d2db5;
+padding:30px 20px;
+border-radius:0 0 30px 30px;
 text-align:center;
 color:white;
 margin-bottom:20px;
 }
 
 .top-box h1{
-margin:0;
 font-size:32px;
+margin-bottom:10px;
 }
 
 .top-box p{
-margin-top:10px;
-font-size:17px;
+font-size:16px;
 opacity:0.9;
 }
 
-.approve-box{
-background:#e8f7e8;
-padding:25px;
+.card{
+background:white;
+padding:20px;
 border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.approve-box{
+background:#e6f6e6;
+padding:25px;
+border-radius:20px;
 text-align:center;
 margin-bottom:25px;
 }
 
 .approve-box h2{
-color:#1d6b1d;
-margin:0;
+color:#187a18;
+margin-bottom:10px;
+font-size:28px;
 }
 
 .big-amount{
-font-size:52px;
+font-size:50px;
 font-weight:bold;
-color:#146214;
-margin:15px 0;
+color:#0f6d0f;
+margin-bottom:10px;
 }
 
 .loan-value{
 text-align:center;
 font-size:45px;
 font-weight:bold;
-color:#2d2fa3;
-margin-bottom:20px;
+color:#1d2db5;
+margin:20px 0;
 }
 
 input[type=range]{
 width:100%;
-accent-color:#ffcc00;
+margin:20px 0;
+accent-color:#ffd400;
 }
 
 .range-label{
 display:flex;
 justify-content:space-between;
-margin-top:10px;
 color:#777;
-font-size:15px;
+margin-bottom:25px;
 }
 
 .tenure-title{
-margin-top:35px;
 font-size:28px;
+margin-bottom:20px;
 }
 
 .tenure-box{
 display:flex;
 gap:15px;
-margin-top:20px;
+margin-bottom:25px;
 }
 
 .tenure{
 flex:1;
-padding:18px;
-border-radius:18px;
+padding:20px;
 border:2px solid #ddd;
+border-radius:20px;
 background:white;
-font-size:18px;
+font-size:22px;
 cursor:pointer;
-transition:0.3s;
+}
+
+.tenure strong{
+font-size:32px;
 }
 
 .tenure.active{
-border:2px solid #2d2fa3;
+border:3px solid #1d2db5;
 background:#eef0ff;
-color:#2d2fa3;
-font-weight:bold;
+color:#1d2db5;
 }
 
 .details-box{
-margin-top:30px;
-background:#f5f5f5;
+background:#f6f6fb;
 padding:20px;
 border-radius:20px;
+margin-bottom:25px;
 }
 
 .detail-row{
 display:flex;
 justify-content:space-between;
-padding:14px 0;
+padding:15px 0;
 border-bottom:1px solid #ddd;
-font-size:18px;
+font-size:22px;
 }
 
 .detail-row:last-child{
@@ -149,67 +134,19 @@ border-bottom:none;
 }
 
 .fee{
-color:#e53935;
+color:red;
 font-weight:bold;
 }
 
-.apply-btn,
-button{
+.apply-btn{
 width:100%;
-padding:18px;
+padding:20px;
 border:none;
 border-radius:18px;
-background:#ffcc00;
-font-size:22px;
+background:#ffd400;
+font-size:28px;
 font-weight:bold;
 cursor:pointer;
-margin-top:30px;
-transition:0.3s;
-}
-
-.apply-btn:hover,
-button:hover{
-transform:scale(1.02);
-}
-
-.amount{
-font-size:55px;
-font-weight:bold;
-color:#16a34a;
-text-align:center;
-margin:25px 0;
-}
-
-.status p{
-font-size:22px;
-margin:18px 0;
-}
-
-.success{
-color:green;
-font-weight:bold;
-}
-
-.pending{
-color:#f59e0b;
-font-weight:bold;
-}
-
-input,
-select{
-width:100%;
-padding:16px;
-margin-top:15px;
-border-radius:14px;
-border:1px solid #ccc;
-font-size:18px;
-box-sizing:border-box;
-outline:none;
-}
-
-input:focus{
-border-color:#ffcc00;
-box-shadow:0 0 6px rgba(255,204,0,0.5);
 }
 
 .loading-screen{
@@ -218,21 +155,27 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(255,255,255,0.95);
+background:white;
 display:none;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:999;
+z-index:9999;
 }
 
 .loader{
 width:70px;
 height:70px;
 border:8px solid #eee;
-border-top:8px solid #ffcc00;
+border-top:8px solid #1d2db5;
 border-radius:50%;
 animation:spin 1s linear infinite;
+margin-bottom:20px;
+}
+
+.loading-screen p{
+font-size:24px;
+font-weight:bold;
 }
 
 @keyframes spin{
@@ -241,9 +184,34 @@ transform:rotate(360deg);
 }
 }
 
-.loading-screen p{
-margin-top:20px;
+@media(max-width:600px){
+
+.top-box h1{
+font-size:26px;
+}
+
+.big-amount{
+font-size:42px;
+}
+
+.loan-value{
+font-size:38px;
+}
+
+.tenure{
+font-size:18px;
+padding:15px;
+}
+
+.tenure strong{
+font-size:26px;
+}
+
+.detail-row{
+font-size:18px;
+}
+
+.apply-btn{
 font-size:22px;
-font-weight:bold;
-color:#333;
+}
 }
