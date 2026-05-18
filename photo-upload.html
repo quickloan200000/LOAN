@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Selfie</title>
 <link rel="stylesheet" href="style.css">
-<title>Photo Upload</title>
 </head>
-
 <body>
 
 <div class="container">
-
 <h1>Upload Selfie</h1>
 
-<div class="file-box">
-
-<p>Select Your Selfie</p>
-
+<div class="upload-box">
+<h3>Select Your Selfie</h3>
 <input type="file">
-
 </div>
 
-<a href="document-upload.html">
-<button>Continue</button>
-</a>
-
+<button onclick="nextPage()">Continue</button>
 </div>
+
+<script>
+function nextPage(){
+window.location.href='document-upload.html';
+}
+</script>
 
 </body>
 </html>
