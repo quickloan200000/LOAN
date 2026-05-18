@@ -2,33 +2,151 @@
 <html>
 <head>
 <title>Loan Calculator</title>
-<link rel="stylesheet" href="style.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+padding:20px;
+background:#f3f3f3;
+font-family:sans-serif;
+}
+
+.card{
+max-width:350px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:15px;
+font-size:20px;
+border-radius:10px;
+border:1px solid #ccc;
+margin-top:10px;
+box-sizing:border-box;
+}
+
+.row{
+margin-top:15px;
+font-size:18px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#ffd500;
+border:none;
+border-radius:12px;
+font-size:18px;
+margin-top:25px;
+}
+
+</style>
 </head>
+
 <body>
 
-<div class="container">
-<h1>Loan Calculation</h1>
+<div class="card">
 
-<h2>Loan Amount : ₹2,50,000</h2>
-<h2>Interest : 2.5%</h2>
-<h2>Tenure : 36 Months</h2>
-<h2>Monthly EMI : ₹10,450</h2>
-<h2>Processing Fee : ₹2,500</h2>
-<h2>GST : ₹450</h2>
-<h2>Total Repayment : ₹3,76,200</h2>
+<h2>₹2,50,000 Eligible</h2>
 
-<h3>Emergency Contact : 044-40001234</h3>
-<h3>Customer Care : 1800-889-900</h3>
-<h3>Company : RapidLoan Finance</h3>
+<label>Enter Loan Amount</label>
 
-<button onclick="nextPage()">Submit Application</button>
+<input
+type="number"
+id="amount"
+value="250000"
+oninput="calculate()"
+>
+
+<div class="row">
+Interest : 2.5%
+</div>
+
+<div class="row">
+Tenure : 36 Months
+</div>
+
+<div class="row">
+Processing Fee : ₹2500
+</div>
+
+<div class="row">
+GST : ₹450
+</div>
+
+<div class="row">
+Monthly EMI : ₹<span id="emi"></span>
+</div>
+
+<div class="row">
+Total Repayment : ₹<span id="total"></span>
+</div>
+
+<button onclick="submitApplication()">
+Submit Application
+</button>
 
 </div>
 
 <script>
-function nextPage(){
-window.location.href='pending-status.html';
+
+function calculate(){
+
+let amount =
+parseInt(document.getElementById("amount").value);
+
+let interest = 2.5;
+
+let months = 36;
+
+let processingFee = 2500;
+
+let gst = 450;
+
+let emi =
+Math.round(
+(amount/months)
++
+(amount*interest/100)
+);
+
+let total =
+(emi * months)
++
+processingFee
++
+gst;
+
+document.getElementById("emi").innerHTML =
+emi.toLocaleString();
+
+document.getElementById("total").innerHTML =
+total.toLocaleString();
+
 }
+
+calculate();
+
+function submitApplication(){
+
+window.location.href =
+"pending-status.html";
+
+}
+
 </script>
 
 </body>
