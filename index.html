@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
 <title>Employee Login</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="container">
-
 <h1>Employee Login</h1>
 
 <input type="text" placeholder="Employee ID">
-
 <input type="password" placeholder="Password">
 
-<a href="phone-register.html">
-<button>Login</button>
-</a>
-
+<button onclick="login()">Login</button>
 </div>
+
+<script>
+function login(){
+window.location.href='phone-register.html';
+}
+</script>
 
 </body>
 </html>
