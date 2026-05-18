@@ -1,34 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pending Status</title>
-<link rel="stylesheet" href="style.css">
+<title>Application Status</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:#f3f3f3;
+font-family:sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+width:320px;
+background:white;
+padding:25px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.loader{
+width:70px;
+height:70px;
+border:8px solid #ddd;
+border-top:8px solid #ffd500;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:auto;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+.hidden{
+display:none;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#ffd500;
+border:none;
+border-radius:12px;
+font-size:18px;
+margin-top:20px;
+}
+
+.status{
+margin-top:15px;
+font-size:17px;
+}
+
+</style>
 </head>
+
 <body>
 
-<div class="container">
-<div class="status">
+<div class="card">
 
-<h3 style="color:orange;">PENDING APPROVAL</h3>
+<div id="loading">
 
-<h1>Application Submitted!</h1>
+<div class="loader"></div>
+
+<h2>Please Wait...</h2>
+
+<p>Submitting Application...</p>
+
+</div>
+
+<div id="success" class="hidden">
+
+<h2>Application Submitted Successfully</h2>
 
 <h1>₹2,50,000</h1>
 
-<h2>✔ Application Submitted</h2>
-<h2>✔ Documents Verified</h2>
-<h2>✔ KYC Verified</h2>
-<h2>⏳ Under Review</h2>
-<h2>⏳ RBI Compliance Check</h2>
-<h2>⏳ Approval Pending</h2>
-<h2>⏳ Disbursement Pending</h2>
+<div class="status">✔ Documents Verified</div>
 
-<h3>Offer expires in 09:59</h3>
+<div class="status">✔ KYC Verified</div>
 
-<button>Track Application</button>
+<div class="status">⏳ RBI Review Pending</div>
+
+<div class="status">⏳ Approval Pending</div>
+
+<div class="status">⏳ Disbursement Pending</div>
+
+<button>
+Track Application
+</button>
 
 </div>
+
 </div>
+
+<script>
+
+setTimeout(function(){
+
+document.getElementById("loading").style.display =
+"none";
+
+document.getElementById("success").classList.remove(
+"hidden"
+);
+
+},3000);
+
+</script>
 
 </body>
 </html>
