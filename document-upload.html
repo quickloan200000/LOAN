@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,22 +9,91 @@
 
 <body>
 
-<div class="card">
+<div class="loan-page">
 
-<h2>Upload Documents</h2>
+    <div class="top-box">
+        <h1>Document Upload</h1>
+        <p>Upload your required KYC documents</p>
+    </div>
 
-<p>Aadhaar Card</p>
-<input type="file">
+    <div class="card">
 
-<p>PAN Card</p>
-<input type="file">
+        <div class="approve-box">
 
-<p>Bank Passbook</p>
-<input type="file">
+            <h2>📄 Verify Your Documents</h2>
 
-<button onclick="nextPage()">
-Submit Documents
-</button>
+            <p>
+                Upload clear images or PDF files
+                for faster verification.
+            </p>
+
+        </div>
+
+        <div class="details-box">
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    Aadhaar Card
+                </label>
+
+                <input
+                type="file"
+                id="aadhaar"
+                accept="image/*,.pdf"
+                style="margin-top:10px;">
+
+            </div>
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    PAN Card
+                </label>
+
+                <input
+                type="file"
+                id="pan"
+                accept="image/*,.pdf"
+                style="margin-top:10px;">
+
+            </div>
+
+            <div class="detail-row" style="border:none;display:block;">
+
+                <label style="font-size:18px;font-weight:bold;">
+                    Bank Passbook
+                </label>
+
+                <input
+                type="file"
+                id="passbook"
+                accept="image/*,.pdf"
+                style="margin-top:10px;">
+
+            </div>
+
+        </div>
+
+        <button
+        class="apply-btn"
+        onclick="nextPage()">
+
+            Submit Documents →
+
+        </button>
+
+    </div>
+
+</div>
+
+<div id="loadingScreen" class="loading-screen">
+
+    <div class="loader"></div>
+
+    <p>
+        Verifying Documents...
+    </p>
 
 </div>
 
@@ -32,23 +101,35 @@ Submit Documents
 
 function nextPage(){
 
-document.body.innerHTML=`
+    let aadhaar =
+    document.getElementById("aadhaar").files.length;
 
-<div class="card">
+    let pan =
+    document.getElementById("pan").files.length;
 
-<div class="loader"></div>
+    let passbook =
+    document.getElementById("passbook").files.length;
 
-<h2>Verifying Documents...</h2>
+    if(
+    aadhaar===0 ||
+    pan===0 ||
+    passbook===0){
 
-</div>
+        alert("Please upload all required documents");
 
-`;
+        return;
+    }
 
-setTimeout(function(){
+    document
+    .getElementById("loadingScreen")
+    .style.display = "flex";
 
-window.location.href="eligibility.html";
+    setTimeout(function(){
 
-},3000);
+        window.location.href =
+        "eligibility.html";
+
+    },3000);
 
 }
 
