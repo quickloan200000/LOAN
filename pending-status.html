@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Application Status</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<title>Pending Status</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,18 +11,32 @@
 
 <div class="card">
 
-<h2>Application Submitted Successfully</h2>
+<h3 style="color:#ff9800;">
+PENDING APPROVAL
+</h3>
+
+<h2>
+Application Submitted Successfully
+</h2>
 
 <div class="amount">
 ₹<span id="loanAmount"></span>
 </div>
 
 <div class="status">
+
+<p>✅ Application Submitted</p>
+
 <p>✅ Documents Verified</p>
+
 <p>✅ KYC Verified</p>
+
 <p>⏳ RBI Review Pending</p>
+
 <p>⏳ Approval Pending</p>
+
 <p>⏳ Disbursement Pending</p>
+
 </div>
 
 <button>
@@ -33,8 +47,12 @@ Track Application
 
 <script>
 
-document.getElementById("loanAmount").innerHTML =
-localStorage.getItem("loanAmount") || "50,000";
+document.getElementById(
+"loanAmount"
+).innerHTML=
+localStorage.getItem(
+"loanAmount"
+)||"50,000";
 
 </script>
 
