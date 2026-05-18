@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Personal Details</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<title>Personal Details</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,8 +14,11 @@
 <h2>Personal Details</h2>
 
 <input type="text" placeholder="Full Name">
+
 <input type="text" placeholder="Father Name">
+
 <input type="number" placeholder="Aadhaar Number">
+
 <input type="text" placeholder="PAN Number">
 
 <select>
@@ -24,21 +27,47 @@
 <option>Female</option>
 </select>
 
-<input type="text" placeholder="Occupation">
 <input type="number" placeholder="Monthly Income">
-<input type="text" placeholder="Company Name">
-<input type="text" placeholder="Address">
-<input type="text" placeholder="City">
-<input type="text" placeholder="State">
-<input type="number" placeholder="Pincode">
-<input type="number" placeholder="Alternate Mobile Number">
-<input type="number" placeholder="Emergency Contact Number">
 
-<a href="loan-calculator.html">
-<button>Next</button>
-</a>
+<input type="text" placeholder="Address">
+
+<input type="text" placeholder="City">
+
+<input type="text" placeholder="State">
+
+<input type="number" placeholder="Pincode">
+
+<button onclick="nextPage()">
+Next
+</button>
 
 </div>
+
+<script>
+
+function nextPage(){
+
+document.body.innerHTML=`
+
+<div class="card">
+
+<div class="loader"></div>
+
+<h2>Loading...</h2>
+
+</div>
+
+`;
+
+setTimeout(function(){
+
+window.location.href="alternate-numbers.html";
+
+},3000);
+
+}
+
+</script>
 
 </body>
 </html>
