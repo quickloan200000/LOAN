@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,48 +11,66 @@
 
 <div class="card">
 
-<h3 style="color:#ff9800;">
-PENDING APPROVAL
-</h3>
+    <h3 style="color:#f59e0b;">PENDING APPROVAL</h3>
 
-<h2>
-Application Submitted Successfully
-</h2>
+    <h1>
+        Application Submitted Successfully
+    </h1>
 
-<div class="amount">
-₹<span id="loanAmount"></span>
-</div>
+    <div class="amount" id="loanAmount">
+        ₹0
+    </div>
 
-<div class="status">
+    <div class="status">
 
-<p>✅ Application Submitted</p>
+        <p class="success">
+            ✅ Application Submitted
+        </p>
 
-<p>✅ Documents Verified</p>
+        <p class="success">
+            ✅ Documents Verified
+        </p>
 
-<p>✅ KYC Verified</p>
+        <p class="success">
+            ✅ KYC Verified
+        </p>
 
-<p>⏳ RBI Review Pending</p>
+        <p class="pending">
+            ⏳ RBI Review Pending
+        </p>
 
-<p>⏳ Approval Pending</p>
+        <p class="pending">
+            ⏳ Approval Pending
+        </p>
 
-<p>⏳ Disbursement Pending</p>
+        <p class="pending">
+            ⏳ Disbursement Pending
+        </p>
 
-</div>
+    </div>
 
-<button>
-Track Application
-</button>
+    <button onclick="trackApp()">
+        Track Application
+    </button>
 
 </div>
 
 <script>
 
-document.getElementById(
-"loanAmount"
-).innerHTML=
-localStorage.getItem(
-"loanAmount"
-)||"50,000";
+const savedAmount = localStorage.getItem("loanAmount");
+
+if(savedAmount){
+
+    document.getElementById("loanAmount").innerText =
+    "₹" + parseInt(savedAmount).toLocaleString();
+
+}
+
+function trackApp(){
+
+    alert("Application is under review");
+
+}
 
 </script>
 
