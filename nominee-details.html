@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Nominee Details</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Nominee Details</h2>
+
+<input type="text"
+id="nomineeName"
+placeholder="Nominee Full Name">
+
+<input type="number"
+id="nomineeAge"
+placeholder="Nominee Age">
+
+<select id="relationship">
+
+<option>Relationship</option>
+
+<option>Father</option>
+
+<option>Mother</option>
+
+<option>Brother</option>
+
+<option>Sister</option>
+
+<option>Wife</option>
+
+<option>Husband</option>
+
+<option>Friend</option>
+
+</select>
+
+<h3>
+Upload Aadhaar Card
+</h3>
+
+<input type="file"
+id="aadhaarFile">
+
+<h3>
+Upload Voter ID
+</h3>
+
+<input type="file"
+id="voterFile">
+
+<button onclick="nextPage()">
+
+Continue →
+
+</button>
+
+</div>
+
+<script>
+
+function nextPage(){
+
+const nomineeName =
+document.getElementById("nomineeName").value;
+
+const nomineeAge =
+document.getElementById("nomineeAge").value;
+
+const relationship =
+document.getElementById("relationship").value;
+
+localStorage.setItem(
+"nomineeName",
+nomineeName
+);
+
+localStorage.setItem(
+"nomineeAge",
+nomineeAge
+);
+
+localStorage.setItem(
+"relationship",
+relationship
+);
+
+document.body.innerHTML = `
+
+<div class="card">
+
+<div class="loader"></div>
+
+<h2>Verifying Nominee...</h2>
+
+<p>Please wait...</p>
+
+</div>
+
+`;
+
+setTimeout(function(){
+
+window.location.href =
+"alternate-numbers.html";
+
+},3000);
+
+}
+
+</script>
+
+</body>
+</html>
