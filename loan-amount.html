@@ -1,42 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loan Amount</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="container">
 
-    <div class="success-box">
-        <h1>You’re Pre-Approved!</h1>
-        <h2>₹2,50,000</h2>
-    </div>
+<div class="card">
+<h1>You're Pre-Approved!</h1>
+<h1>₹2,50,000</h1>
+</div>
 
-    <div class="loan-details">
+<h2>Loan Amount : ₹2,50,000</h2>
+<h2>Interest : 2.5%</h2>
+<h2>EMI : ₹10,450</h2>
+<h2>Document Fee : ₹2500</h2>
 
-        <p><strong>Loan Amount :</strong> ₹2,50,000</p>
-
-        <p><strong>Interest :</strong> 2.5%</p>
-
-        <p><strong>EMI :</strong> ₹10,450</p>
-
-        <p><strong>Document Fee :</strong> ₹2500</p>
-
-    </div>
-
-    <button class="btn" onclick="applyLoan()">
-        Apply Loan
-    </button>
+<button onclick="nextPage()">Apply Loan</button>
 
 </div>
 
 <script>
-function applyLoan() {
-    window.location.href = "pending-status.html";
+function nextPage(){
+window.location.href='loan-calculator.html';
 }
 </script>
 
