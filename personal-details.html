@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
 <title>Personal Details</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="container">
-
 <h1>Personal Details</h1>
 
 <input type="text" placeholder="Full Name">
+<input type="text" placeholder="Father Name">
+<input type="text" placeholder="Aadhaar Number">
+<input type="text" placeholder="PAN Number">
 
-<input type="number" placeholder="Aadhaar Number">
+<select>
+<option>Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select>
 
+<input type="date">
+<input type="text" placeholder="Occupation">
+<input type="text" placeholder="Monthly Income">
+<input type="text" placeholder="Company Name">
 <input type="text" placeholder="Address">
+<input type="text" placeholder="City">
+<input type="text" placeholder="State">
+<input type="text" placeholder="Pincode">
+<input type="text" placeholder="Alternate Mobile Number">
+<input type="text" placeholder="Emergency Contact Number">
 
-<input type="number" placeholder="Pincode">
-
-<a href="photo-upload.html">
-<button>Next</button>
-</a>
-
+<button onclick="nextPage()">Next</button>
 </div>
+
+<script>
+function nextPage(){
+window.location.href='bank-details.html';
+}
+</script>
 
 </body>
 </html>
