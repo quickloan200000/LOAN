@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Upload Selfie</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Upload</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-<h1>Upload Selfie</h1>
+<div class="card">
 
-<div class="upload-box">
-<h3>Select Your Selfie</h3>
-<input type="file">
-</div>
+<h2>Upload Selfie</h2>
 
-<button onclick="nextPage()">Continue</button>
+<input type="file" accept="image/*">
+
+<button onclick="nextPage()">
+Continue
+</button>
+
 </div>
 
 <script>
+
 function nextPage(){
-window.location.href='document-upload.html';
+
+document.body.innerHTML=`
+
+<div class="card">
+
+<div class="loader"></div>
+
+<h2>Uploading Photo...</h2>
+
+</div>
+
+`;
+
+setTimeout(function(){
+
+window.location.href="document-upload.html";
+
+},3000);
+
 }
+
 </script>
 
 </body>
