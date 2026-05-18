@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Alternate Numbers</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<title>Alternate Numbers</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,14 +13,41 @@
 
 <h2>Alternate Numbers</h2>
 
-<input type="number" placeholder="Alternate Number 1">
-<input type="number" placeholder="Alternate Number 2">
+<input type="number" placeholder="Alternate Number">
 
-<a href="personal-details.html">
-<button>Continue</button>
-</a>
+<input type="number" placeholder="Emergency Contact">
+
+<button onclick="nextPage()">
+Continue
+</button>
 
 </div>
+
+<script>
+
+function nextPage(){
+
+document.body.innerHTML=`
+
+<div class="card">
+
+<div class="loader"></div>
+
+<h2>Please Wait...</h2>
+
+</div>
+
+`;
+
+setTimeout(function(){
+
+window.location.href="photo-upload.html";
+
+},3000);
+
+}
+
+</script>
 
 </body>
 </html>
