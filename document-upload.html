@@ -3,36 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
 <title>Document Upload</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>Upload Documents</h1>
+    <h1>Upload Documents</h1>
 
-<div class="file-box">
-<p>Upload Aadhaar Card</p>
-<input type="file">
+    <!-- Aadhaar -->
+    <div class="upload-box">
+        <h2>Upload Aadhaar Card</h2>
+        <input type="file" accept="image/*,.pdf">
+    </div>
+
+    <!-- PAN -->
+    <div class="upload-box">
+        <h2>Upload PAN Card</h2>
+        <input type="file" accept="image/*,.pdf">
+    </div>
+
+    <!-- Passbook -->
+    <div class="upload-box">
+        <h2>Upload Passbook</h2>
+        <input type="file" accept="image/*,.pdf">
+    </div>
+
+    <!-- Button -->
+    <button class="btn" onclick="nextPage()">
+        Submit Documents
+    </button>
+
 </div>
 
-<div class="file-box">
-<p>Upload PAN Card</p>
-<input type="file">
-</div>
-
-<div class="file-box">
-<p>Upload Passbook</p>
-<input type="file">
-</div>
-
-<a href="alternate-number.html">
-<button>Submit Documents</button>
-</a>
-
-</div>
+<script>
+function nextPage() {
+    window.location.href = "loan-amount.html";
+}
+</script>
 
 </body>
 </html>
