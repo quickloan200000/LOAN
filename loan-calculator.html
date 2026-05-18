@@ -54,66 +54,48 @@ Submit Application
 
 function calculate(){
 
-let amount=
-parseInt(document.getElementById("amount").value)||0;
+let amount =
+parseInt(document.getElementById("amount").value) || 0;
 
-let interest=2.5;
+let annualInterest = 12;
 
-let months=36;
+let months = 36;
 
-let processingFee=2500;
+let processingFee = 2500;
 
-let gst=450;
+let gst = 450;
 
-let emi=Math.round(
-(amount/months)
-+
-(amount*interest/100)
+// monthly interest
+let r = annualInterest / 12 / 100;
+
+// EMI Formula
+let emi =
+Math.round(
+(amount * r * Math.pow(1+r,months)) /
+(Math.pow(1+r,months)-1)
 );
 
-let total=
-(emi*months)
+let total =
+(emi * months)
 +
 processingFee
 +
 gst;
 
-document.getElementById("emi").innerHTML=
-emi.toLocaleString();
+document.getElementById("emi").innerHTML =
+emi.toLocaleString('en-IN');
 
-document.getElementById("total").innerHTML=
-total.toLocaleString();
+document.getElementById("total").innerHTML =
+total.toLocaleString('en-IN');
 
 localStorage.setItem(
 "loanAmount",
-amount.toLocaleString()
+amount.toLocaleString('en-IN')
 );
 
 }
 
 calculate();
-
-function submitApplication(){
-
-document.body.innerHTML=`
-
-<div class="card">
-
-<div class="loader"></div>
-
-<h2>Submitting Application...</h2>
-
-</div>
-
-`;
-
-setTimeout(function(){
-
-window.location.href="pending-status.html";
-
-},3000);
-
-}
 
 </script>
 
