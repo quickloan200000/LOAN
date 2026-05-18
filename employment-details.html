@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employment Details</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Employment Details</h2>
+
+<input type="text" id="company"
+placeholder="Company Name">
+
+<select id="job">
+
+<option>Job Type</option>
+<option>Private Employee</option>
+<option>Government Employee</option>
+<option>Self Employed</option>
+<option>Business</option>
+
+</select>
+
+<input type="number" id="salary"
+placeholder="Monthly Salary">
+
+<input type="number" id="experience"
+placeholder="Work Experience (Years)">
+
+<input type="text" id="bank"
+placeholder="Bank Name">
+
+<button onclick="nextPage()">
+Continue →
+</button>
+
+</div>
+
+<script>
+
+function nextPage(){
+
+const company =
+document.getElementById("company").value;
+
+const job =
+document.getElementById("job").value;
+
+const salary =
+document.getElementById("salary").value;
+
+const experience =
+document.getElementById("experience").value;
+
+const bank =
+document.getElementById("bank").value;
+
+localStorage.setItem("company", company);
+
+localStorage.setItem("job", job);
+
+localStorage.setItem("salary", salary);
+
+localStorage.setItem("experience", experience);
+
+localStorage.setItem("bank", bank);
+
+document.body.innerHTML=`
+
+<div class="card">
+
+<div class="loader"></div>
+
+<h2>Verifying Employment...</h2>
+
+<p>Please wait...</p>
+
+</div>
+
+`;
+
+setTimeout(function(){
+
+window.location.href="nominee-details.html";
+
+},3000);
+
+}
+
+</script>
+
+</body>
+</html>
