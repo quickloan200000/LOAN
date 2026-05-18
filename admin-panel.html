@@ -2,34 +2,253 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Admin Panel</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+padding:20px;
+background:#eef2f7;
+font-family:Arial,sans-serif;
+}
+
+.admin-title{
+font-size:32px;
+font-weight:bold;
+margin-bottom:20px;
+color:#1e293b;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-bottom:25px;
+}
+
+.stat-box{
+background:white;
+padding:20px;
+border-radius:18px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.stat-box h2{
+margin:0;
+font-size:30px;
+color:#2563eb;
+}
+
+.stat-box p{
+margin-top:8px;
+color:#555;
+font-size:15px;
+}
+
+.table-box{
+background:white;
+padding:20px;
+border-radius:18px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+overflow:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#2563eb;
+color:white;
+padding:14px;
+font-size:15px;
+}
+
+td{
+padding:14px;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+}
+
+.pending{
+background:#fff7d6;
+color:#b45309;
+}
+
+.approved{
+background:#dcfce7;
+color:#166534;
+}
+
+.rejected{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.action-btn{
+border:none;
+padding:8px 14px;
+border-radius:10px;
+font-size:13px;
+cursor:pointer;
+margin-right:5px;
+}
+
+.approve-btn{
+background:#16a34a;
+color:white;
+}
+
+.reject-btn{
+background:#dc2626;
+color:white;
+}
+
+@media(max-width:700px){
+
+.stats{
+grid-template-columns:1fr;
+}
+
+table{
+font-size:12px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="admin-title">
+Loan Admin Panel
+</div>
 
-<h1>Admin Panel</h1>
+<div class="stats">
 
-<div class="box">
+<div class="stat-box">
+<h2>245</h2>
+<p>Total Applications</p>
+</div>
 
-<p><b>Name :</b> Rahul</p>
+<div class="stat-box">
+<h2>120</h2>
+<p>Approved Loans</p>
+</div>
 
-<p><b>Phone :</b> 9876543210</p>
+<div class="stat-box">
+<h2>95</h2>
+<p>Pending Review</p>
+</div>
 
-<p><b>Loan Amount :</b> ₹2,50,000</p>
+<div class="stat-box">
+<h2>30</h2>
+<p>Rejected Applications</p>
+</div>
 
-<button class="approve-btn">
+</div>
+
+<div class="table-box">
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Loan Amount</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr>
+<td>Arun Kumar</td>
+<td>₹1,40,000</td>
+<td>
+<span class="status pending">
+Pending
+</span>
+</td>
+
+<td>
+
+<button
+class="action-btn approve-btn">
 Approve
 </button>
 
-<button class="reject-btn">
+<button
+class="action-btn reject-btn">
 Reject
 </button>
 
-</div>
+</td>
+</tr>
+
+<tr>
+<td>Rahul</td>
+<td>₹75,000</td>
+
+<td>
+<span class="status approved">
+Approved
+</span>
+</td>
+
+<td>
+
+<button
+class="action-btn approve-btn">
+Approve
+</button>
+
+<button
+class="action-btn reject-btn">
+Reject
+</button>
+
+</td>
+</tr>
+
+<tr>
+<td>Vignesh</td>
+<td>₹2,00,000</td>
+
+<td>
+<span class="status rejected">
+Rejected
+</span>
+</td>
+
+<td>
+
+<button
+class="action-btn approve-btn">
+Approve
+</button>
+
+<button
+class="action-btn reject-btn">
+Reject
+</button>
+
+</td>
+</tr>
+
+</table>
 
 </div>
 
