@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Processing Fee Payment</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:#f3f3f3;
+font-family:sans-serif;
+}
+
+.payment-page{
+padding:20px;
+}
+
+.payment-card{
+background:white;
+padding:25px;
+border-radius:25px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.payment-title{
+text-align:center;
+font-size:32px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.amount{
+text-align:center;
+font-size:45px;
+font-weight:bold;
+color:green;
+margin-bottom:20px;
+}
+
+.qr-box{
+text-align:center;
+}
+
+.qr-box img{
+width:260px;
+height:260px;
+border-radius:20px;
+object-fit:cover;
+}
+
+.qr-box p{
+font-size:18px;
+margin-top:15px;
+font-weight:bold;
+}
+
+.input-box{
+margin-top:25px;
+}
+
+.input-box label{
+display:block;
+font-size:18px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.input-box input{
+width:100%;
+height:55px;
+border:2px solid #ddd;
+border-radius:15px;
+padding:0 15px;
+font-size:18px;
+box-sizing:border-box;
+}
+
+.submit-btn{
+width:100%;
+height:60px;
+border:none;
+background:#ffd500;
+font-size:24px;
+font-weight:bold;
+border-radius:18px;
+margin-top:30px;
+cursor:pointer;
+}
+
+.loading-screen{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,0.95);
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+}
+
+.loader{
+width:70px;
+height:70px;
+border:8px solid #eee;
+border-top:8px solid #ffd500;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin-bottom:20px;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-page">
+
+<div class="payment-card">
+
+<div class="payment-title">
+Processing Fee Payment
+</div>
+
+<div class="amount">
+₹2,500
+</div>
+
+<div class="qr-box">
+
+<img src="qr.jpg" alt="QR Code">
+
+<p>
+Scan QR & Complete Payment
+</p>
+
+</div>
+
+<div class="input-box">
+
+<label>
+UTR Number
+</label>
+
+<input
+type="text"
+id="utr"
+placeholder="Enter UTR Number">
+
+</div>
+
+<div class="input-box">
+
+<label>
+Payment Date
+</label>
+
+<input
+type="date"
+id="date">
+
+</div>
+
+<div class="input-box">
+
+<label>
+Payment Time
+</label>
+
+<input
+type="time"
+id="time">
+
+</div>
+
+<button
+class="submit-btn"
+onclick="submitPayment()">
+
+Submit
+
+</button>
+
+</div>
+
+</div>
+
+<div id="loadingScreen"
+class="loading-screen">
+
+<div class="loader"></div>
+
+<p>
+Processing Payment...
+</p>
+
+</div>
+
+<script>
+
+function submitPayment(){
+
+let utr =
+document.getElementById("utr").value;
+
+let date =
+document.getElementById("date").value;
+
+let time =
+document.getElementById("time").value;
+
+if(
+utr === "" ||
+date === "" ||
+time === ""
+){
+
+alert(
+"Please fill all payment details"
+);
+
+return;
+
+}
+
+localStorage.setItem(
+"utrNumber",
+utr
+);
+
+localStorage.setItem(
+"paymentDate",
+date
+);
+
+localStorage.setItem(
+"paymentTime",
+time
+);
+
+document
+.getElementById("loadingScreen")
+.style.display = "flex";
+
+setTimeout(function(){
+
+window.location.href =
+"pending-status.html";
+
+},3000);
+
+}
+
+</script>
+
+</body>
+</html>
